@@ -7,12 +7,12 @@ let config = require('../config.json');
 let proxy = new httpProxy.createProxyServer({
   target: config.apiRootUrl,
   headers: {
-    'acs-api-key': config.apiKey,
-    host: 'api.accusoft.com'
+    host: 'http://162.243.33.7:18681'
   }
 });
 
 function pcc(request, response) {
+	console.log("pcc", pcc);
   request.url = request.url.replace('pcc', 'PCCIS/V1');
   proxy.web(request, response);
 }
